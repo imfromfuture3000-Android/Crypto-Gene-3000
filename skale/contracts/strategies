@@ -1,0 +1,11 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.24;
+
+import "../IStrategy.sol";
+
+contract Oracle is IStrategy {
+    function execute() external pure returns (int256) {
+        // TODO: implement strategy logic
+        return 0;
+    }
+}
