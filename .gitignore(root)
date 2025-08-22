@@ -1,0 +1,23 @@
+# Node / Hardhat
+node_modules/
+.env
+.env.*
+artifacts/
+cache/
+coverage/
+coverage.json
+typechain/
+typechain-types/
+dist/
+tmp/
+
+# Solana / Anchor
+target/
+.anchor/
+**/programs/**/target/
+**/tests/.anchor/
+**/.DS_Store
+
+# Editor
+.vscode/
+.idea/
