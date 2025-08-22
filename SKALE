@@ -1,5 +1,0 @@
----
-
-👉 This way you can just copy this whole structure, and you’re ready to deploy both **Solana + SKALE** from the same repo.  
-
-Do you want me to also **write the SKALE `deploy.js` script** so you can test your first contract right away?
