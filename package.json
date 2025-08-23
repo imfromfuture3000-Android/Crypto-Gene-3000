@@ -1,0 +1,51 @@
+{
+  "name": "crypto-gene-3000",
+  "version": "1.0.0",
+  "description": "🚀 Next-generation blockchain vaults project with autonomous trading swarm intelligence",
+  "main": "gene9000.js",
+  "scripts": {
+    "start": "node gene9000.js",
+    "deploy": "./deploy.sh",
+    "deploy:skale": "cd skale && npm run deploy",
+    "deploy:docker": "docker-compose up -d",
+    "stop:docker": "docker-compose down",
+    "logs:docker": "docker-compose logs -f",
+    "manage": "./gene9000-manager.sh",
+    "health": "./gene9000-manager.sh health",
+    "test": "cd skale && npm test"
+  },
+  "keywords": [
+    "blockchain",
+    "defi",
+    "autonomous-trading",
+    "cross-chain",
+    "arbitrage",
+    "skale",
+    "solana",
+    "vault",
+    "gene9000"
+  ],
+  "author": "imfromfuture3000",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/imfromfuture3000-Android/Crypto-Gene-3000.git"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "files": [
+    "gene9000.js",
+    "cross-chain/",
+    "scripts/",
+    "config/",
+    "deploy.sh",
+    "gene9000-manager.sh",
+    "docker-compose.yml",
+    "Dockerfile",
+    ".env.example"
+  ]
+}

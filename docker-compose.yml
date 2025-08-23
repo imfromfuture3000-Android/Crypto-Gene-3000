@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  crypto-gene-3000:
+    build: .
+    container_name: gene9000-system
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./logs:/app/logs
+      - ./.env:/app/.env:ro
+    ports:
+      - "3000:3000"
+    networks:
+      - gene9000-network
+    healthcheck:
+      test: ["CMD", "node", "-e", "const { OneiroGene9000System } = require('./gene9000.js'); console.log('OK');"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Optional: Add monitoring service
+  gene9000-monitor:
+    image: node:20-slim
+    container_name: gene9000-monitor
+    depends_on:
+      - crypto-gene-3000
+    volumes:
+      - ./monitoring:/app
+      - ./logs:/logs:ro
+    working_dir: /app
+    command: tail -f /logs/gene9000.log
+    networks:
+      - gene9000-network
+    profiles:
+      - monitoring
+
+networks:
+  gene9000-network:
+    driver: bridge
+
+volumes:
+  logs:
