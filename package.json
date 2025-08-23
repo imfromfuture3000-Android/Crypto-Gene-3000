@@ -1,0 +1,25 @@
+{
+  "name": "crypto-gene-3000",
+  "version": "1.0.0",
+  "description": "Private ONEIROBOT/GITHUB GENE 9000 System - Autonomous Trading Swarm",
+  "main": "gene9000.js",
+  "private": true,
+  "scripts": {
+    "start": "node gene9000.js",
+    "test": "echo \"Private system - tests require access tokens\" && exit 1"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "keywords": [
+    "private",
+    "blockchain",
+    "trading",
+    "gene9000"
+  ],
+  "author": "Imfromfuture3000",
+  "license": "SEE LICENSE IN LICENSE"
+}
