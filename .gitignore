@@ -9,5 +9,11 @@ ANC_TOKEN_ETH=0x0F3ADC247E91c3c50bC08721355A41037E89Bc20
 
 # Wormhole relayer (Ethereum mainnet official)
 WORMHOLE_RELAYER_ETH=0x27428DD2d3DD32A4D7f7C497eAaa23130d894911
+
+# Node.js dependencies
+node_modules/
+package-lock.json
+
+# SKALE dependencies 
 skale/node_modules/
 skale/package-lock.json
