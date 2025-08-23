@@ -14,6 +14,7 @@ The autonomous trading swarm intelligence system is now OPERATIONAL!
 - 📊 Real-time arbitrage monitoring
 - 🌉 Cross-chain bridge operations
 - 🧠 Oracle & Phantom strategy execution
+- 🌐 **Web Interface for GitHub Codespaces compatibility**
 
 ## GENE 9000 System Components
 
@@ -31,6 +32,15 @@ The autonomous trading swarm intelligence system is now OPERATIONAL!
 ## Quick Start
 
 ### 1. Start the GENE 9000 System
+
+#### Option A: Web Interface (Recommended for GitHub Codespaces)
+```bash
+npm install
+npm run web
+```
+Then open your browser to `http://localhost:3000` or use the forwarded port in GitHub Codespaces.
+
+#### Option B: Console Mode
 ```bash
 node gene9000.js
 ```
@@ -47,11 +57,31 @@ npx hardhat run scripts/deploy.js --network skale
 CONTROLLER_ADDR=0x... BOT_ADDR=0x... npx hardhat run scripts/setBots.js
 ```
 
+## 🌐 GitHub Codespaces Usage
+
+When running in GitHub Codespaces or any web-based development environment:
+
+1. **Install dependencies**: `npm install`
+2. **Start web server**: `npm run web`
+3. **Access via browser**: Use the forwarded port URL (typically port 3000)
+4. **Full web interface**: 
+   - Real-time system monitoring
+   - Start/stop controls
+   - Live log streaming  
+   - Performance statistics
+   - Visual status indicators
+
+The web interface provides the same functionality as the console version but with a user-friendly dashboard perfect for browser-based environments.
+
 ## File Tree
 
 ```
 Crypto-Gene-3000/
+├─ package.json             # 📦 Main project dependencies
+├─ server.js                # 🌐 Web server for browser access  
 ├─ gene9000.js              # 🤖 Main GENE 9000 orchestrator
+├─ public/
+│  └─ index.html            # 🖥️ Web interface dashboard
 ├─ cross-chain/             # Cross-chain operations
 │  ├─ Monitorbots.js        # 📊 Autonomous monitoring swarm
 │  └─ bridgeClient.js       # 🌉 Cross-chain bridge client

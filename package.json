@@ -1,0 +1,32 @@
+{
+  "name": "crypto-gene-3000",
+  "version": "1.0.0",
+  "description": "🚀 Crypto-Gene-3000 - Next-generation blockchain vaults with ONEIROBOT/GITHUB GENE 9000 autonomous trading system",
+  "main": "gene9000.js",
+  "scripts": {
+    "start": "node gene9000.js",
+    "web": "node server.js",
+    "dev": "node server.js",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "socket.io": "^4.8.1"
+  },
+  "keywords": [
+    "blockchain",
+    "crypto",
+    "trading",
+    "gene9000",
+    "oneirobot",
+    "autonomous",
+    "arbitrage",
+    "cross-chain"
+  ],
+  "author": "ONEIROBOT/GITHUB",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
