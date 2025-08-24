@@ -1,6 +1,6 @@
-# Crypto-Gene-3000
+# Cryptonout-9-voults
 
-🚀 **Crypto-Gene-3000** is a next-generation blockchain vaults project, designed with security, automation, and fair royalty-sharing.
+🚀 **Cryptonout-9-voults** is a next-generation blockchain vaults project, designed with security, automation, and fair royalty-sharing.
 
 ## 🤖 ONEIROBOT/GITHUB GENE 9000 - ACTIVATED
 
@@ -50,7 +50,7 @@ CONTROLLER_ADDR=0x... BOT_ADDR=0x... npx hardhat run scripts/setBots.js
 ## File Tree
 
 ```
-Crypto-Gene-3000/
+Cryptonout-9-voults/
 ├─ gene9000.js              # 🤖 Main GENE 9000 orchestrator
 ├─ cross-chain/             # Cross-chain operations
 │  ├─ Monitorbots.js        # 📊 Autonomous monitoring swarm
