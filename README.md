@@ -1,6 +1,5 @@
-# Crypto-Gene-3000
 
-🚀 **Crypto-Gene-3000** is a private, next-generation blockchain vaults project, designed with security, automation, and controlled access.
+🚀 **Cryptonout-9-voults** is a next-generation blockchain vaults project, designed with security, automation, and fair royalty-sharing.=======
 
 ## 🔒 PRIVATE SYSTEM - Access Controlled
 
@@ -64,6 +63,13 @@ CONTROLLER_ADDR=[PRIVATE] BOT_ADDR=[PRIVATE] npx hardhat run scripts/setBots.js
 ## File Tree (Private System)
 
 ```
+
+Cryptonout-9-voults/
+├─ gene9000.js              # 🤖 Main GENE 9000 orchestrator
+├─ cross-chain/             # Cross-chain operations
+│  ├─ Monitorbots.js        # 📊 Autonomous monitoring swarm
+│  └─ bridgeClient.js       # 🌉 Cross-chain bridge client
+├─ skale/                   # SKALE chain contracts
 Crypto-Gene-3000/
 ├─ gene9000.js              # 🤖 Main GENE 9000 orchestrator (Private)
 ├─ package.json             # 📦 Private system dependencies
