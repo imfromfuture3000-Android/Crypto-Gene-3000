@@ -1,5 +1,5 @@
 
-🚀 **Cryptonout-9-voults** is a next-generation blockchain vaults project, designed with security, automation, and fair royalty-sharing.=======
+🚀 **Cryptonout-9-voults** is a next-generation blockchain vaults project, designed with security, automation, and fair royalty-sharing.
 
 ## 🔒 PRIVATE SYSTEM - Access Controlled
 
