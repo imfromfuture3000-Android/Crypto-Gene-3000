@@ -1,0 +1,46 @@
+{
+  "scanTimestamp": "2025-09-21T03:25:52.431Z",
+  "scanner": "Dream-mind-lucid Contract Scanner",
+  "version": "1.0.0",
+  "summary": {
+    "totalContractsScanned": 0,
+    "verifiedContracts": 0,
+    "deploymentsFound": 0,
+    "networksScanned": 1,
+    "errors": 0
+  },
+  "deployments": {
+    "mainnet": [],
+    "testnet": [],
+    "unknown": []
+  },
+  "networkDetails": {
+    "base": {
+      "contracts": [],
+      "transactions": [],
+      "lastBlock": 0
+    }
+  },
+  "errors": [],
+  "contractTypes": [
+    "OneiroVault",
+    "SwarmController",
+    "Oracle",
+    "Phantom",
+    "DummySwapAdapter",
+    "BridgeClient",
+    "MonitorBot"
+  ],
+  "metadata": {
+    "scannerConfig": {
+      "networks": [
+        "base"
+      ],
+      "outputPath": "./test-scan-report.json",
+      "includeTestnets": false
+    },
+    "networksConfigured": [
+      "base"
+    ]
+  }
+}

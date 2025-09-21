@@ -6,6 +6,7 @@
 
 const { Gene9000MonitorSwarm } = require('./cross-chain/Monitorbots');
 const { Gene9000BridgeClient } = require('./cross-chain/bridgeClient');
+const { DreamMindLucidScanner } = require('./scripts/contractScanner');
 
 class OneiroGene9000System {
     constructor(config = {}) {
@@ -29,7 +30,8 @@ class OneiroGene9000System {
         
         this.components = {
             monitor: null,
-            bridge: null
+            bridge: null,
+            scanner: null
         };
         
         this.systemStatus = 'INITIALIZING';
@@ -86,6 +88,13 @@ class OneiroGene9000System {
                 await this.components.bridge.initialize();
             }
             
+            // Initialize Dream-mind-lucid contract scanner
+            console.log('🔍 Initializing Dream-mind-lucid contract scanner...');
+            this.components.scanner = new DreamMindLucidScanner({
+                outputPath: './dream-mind-lucid-deployments.json',
+                includeTestnets: false
+            });
+            
             // Setup royalty tracking (admin access required)
             if (this.accessLevel === 'ADMIN') {
                 this.setupRoyaltySystem();
@@ -129,6 +138,25 @@ class OneiroGene9000System {
         this.totalRoyalties += royaltyAmount;
         
         console.log(`💰 Private royalty collected: ${royaltyAmount.toFixed(6)} ETH (Volume: ${simulatedVolume.toFixed(4)} ETH)`);
+    }
+
+    async executeDreamMindLucidScan() {
+        this.requireAdminAccess();
+        
+        console.log('🔍 GENE 9000: Executing Dream-mind-lucid deployment scan...');
+        
+        try {
+            if (this.components.scanner) {
+                const results = await this.components.scanner.scanAllDeployments();
+                console.log(`✅ Dream-mind-lucid scan completed: ${results.contractsFound} contracts found`);
+                return results;
+            } else {
+                throw new Error('Scanner not initialized');
+            }
+        } catch (error) {
+            console.error('❌ Dream-mind-lucid scan failed:', error.message);
+            throw error;
+        }
     }
 
     async executeAutomatedStrategy() {
@@ -202,7 +230,7 @@ class OneiroGene9000System {
             this.config.ownerWallet.slice(0, 6) + '...' + this.config.ownerWallet.slice(-4) : 
             '[PRIVATE]';
         console.log(`Owner Wallet: ${ownerDisplay}`);
-        console.log(`Components: Monitor: ${this.components.monitor ? '✅' : '❌'}, Bridge: ${this.components.bridge ? '✅' : '❌'}`);
+        console.log(`Components: Monitor: ${this.components.monitor ? '✅' : '❌'}, Bridge: ${this.components.bridge ? '✅' : '❌'}, Scanner: ${this.components.scanner ? '✅' : '❌'}`);
         console.log('==========================================\n');
         
         // Get performance report from monitor
@@ -248,7 +276,8 @@ class OneiroGene9000System {
             },
             components: {
                 monitor: !!this.components.monitor,
-                bridge: !!this.components.bridge
+                bridge: !!this.components.bridge,
+                scanner: !!this.components.scanner
             },
             stats: {
                 totalVolume: this.totalVolume,

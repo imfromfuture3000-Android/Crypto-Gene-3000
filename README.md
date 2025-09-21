@@ -26,6 +26,32 @@ This is a private trading system with restricted access. Valid authentication cr
 - **Monitor Swarm**: Private market scanning for arbitrage opportunities
 - **Bridge Client**: Secure cross-chain asset transfers
 - **Royalty System**: Private fee collection system
+- **Dream-mind-lucid Scanner**: Comprehensive contract deployment tracker
+
+## Dream-mind-lucid Contract Scanner
+
+The Dream-mind-lucid scanner is a comprehensive tool for collecting all real contract addresses and transaction hashes from mainnet deployments of the GENE 9000 ecosystem.
+
+### Features
+- 🔍 **Multi-Network Scanning**: Scans Ethereum, Base, and SKALE networks
+- 📊 **Comprehensive Reporting**: Generates detailed JSON reports with deployment data
+- 🔒 **Access Control Integration**: Requires admin access for full functionality
+- 🌐 **Real-time Analysis**: Analyzes deployment scripts, artifacts, and transaction logs
+- 📋 **Contract Type Detection**: Identifies OneiroVault, Oracle, Phantom, and other contracts
+
+### Usage
+```bash
+# Scan all mainnet deployments
+npm run scan
+
+# Include testnet deployments  
+npm run scan:testnets
+
+# View detailed report
+npm run scan:report
+```
+
+See `scripts/SCANNER_README.md` for complete documentation.
 
 ## Quick Start (Authorized Personnel Only)
 
@@ -60,6 +86,21 @@ npx hardhat run scripts/deploy.js --network skale
 CONTROLLER_ADDR=[PRIVATE] BOT_ADDR=[PRIVATE] npx hardhat run scripts/setBots.js
 ```
 
+### 5. Run Dream-mind-lucid Contract Scanner
+```bash
+# Scan all mainnet deployments (Admin Access Required)
+npm run scan
+
+# Include testnet deployments
+npm run scan:testnets
+
+# View detailed report
+npm run scan:report
+
+# Direct CLI usage
+node scripts/dream-scan.js scan --help
+```
+
 ## File Tree (Private System)
 
 ```
@@ -91,9 +132,12 @@ Crypto-Gene-3000/
 │     └─ src/lib.rs         # 📦 Private Solana program
 ├─ config/                  # Private configuration
 │  └─ addresses.ts          # 🔐 Secure address management
-└─ scripts/                 # Deployment & management (Admin)
+├─ scripts/                 # Deployment & management (Admin)
    ├─ deploy.js             # 🚀 Private contract deployment
-   └─ setBots.js            # 🤖 Private bot registration
+   ├─ setBots.js            # 🤖 Private bot registration
+   ├─ contractScanner.js    # 🔍 Dream-mind-lucid scanner
+   ├─ dream-scan.js         # 📊 Scanner CLI interface
+   └─ SCANNER_README.md     # 📖 Scanner documentation
 ```
 
 ## System Status: 🔒 PRIVATE & SECURED
