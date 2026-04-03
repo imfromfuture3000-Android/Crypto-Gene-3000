@@ -1,5 +1,12 @@
-# Solana owner wallet (mainnet)
-SOLANA_WALLET_OWNER=4eJZVbbsiLAG6EkWvgEYEWKEpdhJPFBYMeJ6DBX98w6a
+# Private System - Security
+.env
+.env.local
+.env.production
+.env.staging
+*.key
+*.pem
+private_keys/
+secrets/
 
 # Ethereum owner wallet
 ETHEREUM_WALLET_OWNER=0x4B1a58A3057d03888510d93B52ABad9Fee9b351d
@@ -16,4 +23,25 @@ package-lock.json
 
 # SKALE dependencies 
 skale/node_modules/
+solana/target/
 skale/package-lock.json
+package-lock.json
+
+# Build artifacts
+dist/
+build/
+cache/
+artifacts/
+
+# Runtime files
+*.log
+*.pid
+tmp/
+
+# Private configuration
+config/private.json
+private_config.json
+
+# System files
+.DS_Store
+Thumbs.db

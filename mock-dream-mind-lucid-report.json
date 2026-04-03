@@ -1,0 +1,236 @@
+{
+  "scanTimestamp": "2025-09-21T03:26:27.411Z",
+  "scanner": "Dream-mind-lucid Contract Scanner",
+  "version": "1.0.0",
+  "summary": {
+    "totalContractsScanned": 4,
+    "verifiedContracts": 11,
+    "deploymentsFound": 0,
+    "networksScanned": 3,
+    "errors": 0
+  },
+  "deployments": {
+    "mainnet": [
+      {
+        "address": "0xef275235bdc3af502766be393b2dc3d06ffd8377",
+        "name": "deployment_script",
+        "source": "/home/runner/work/Crypto-Gene-3000/Crypto-Gene-3000/scripts/deploy.js",
+        "network": "ethereum",
+        "verified": true,
+        "deploymentTx": "0x84d1db93a8d53bbefff0e799a4e08b98dd971026198b191fbee148a255b97ba7"
+      },
+      {
+        "address": "0x4579a4282eaae6e752d72a0d69cfa49c0c686219",
+        "name": "deployment_script",
+        "source": "/home/runner/work/Crypto-Gene-3000/Crypto-Gene-3000/scripts/deploy.js",
+        "network": "ethereum",
+        "verified": true,
+        "deploymentTx": "0x35d27665120f75f365736f795fb7e331b6e9c03af0ab3da521ab631741ca8816"
+      },
+      {
+        "address": "0x1836671ca38fc00acac98fe9877a7ce8fd7d6087",
+        "name": "deployment_script",
+        "source": "/home/runner/work/Crypto-Gene-3000/Crypto-Gene-3000/scripts/setBots.js",
+        "network": "ethereum",
+        "verified": true,
+        "deploymentTx": "0xf9cf2d38427cae65ddbffa9ec95494192f2d7f3a23053ac865ed8791aecc27eb"
+      },
+      {
+        "address": "0xe83f661a82fca83b3f8db423f17c8ab9e33edb97",
+        "name": "deployment_script",
+        "source": "/home/runner/work/Crypto-Gene-3000/Crypto-Gene-3000/scripts/setBots.js",
+        "network": "ethereum",
+        "verified": true,
+        "deploymentTx": "0xd29a11544c903ec05220a70b4f549c66a1c86bf35fa0d8cd2b476466db146420"
+      },
+      {
+        "address": "0xceed3a23acf585fa514b55d80a7869e030b20263",
+        "contractType": "OneiroVault",
+        "transactionHash": "0x28d96534ad1c3fdacd0c03ab65a0e7d752e047e596f0d2dcbae01c8fd1a103ea",
+        "blockNumber": 18500418,
+        "deployer": "0x4dd7ed26bdd729fcd5ceda88fe7b85931b4bb2d2",
+        "network": "ethereum",
+        "gasUsed": "2315798",
+        "timestamp": "2025-09-02T18:26:05.559Z"
+      },
+      {
+        "address": "0xbeee237c361bc206696f3641cf2393dccd4b311a",
+        "contractType": "SwarmController",
+        "transactionHash": "0xb4023ed7db7e340fc92841bf66ded496a820b2e47324e07a7d97c76f4cfb881d",
+        "blockNumber": 18500225,
+        "deployer": "0x47c55b0cb1c1f932b52d753814b1a8c7cef0e3dd",
+        "network": "ethereum",
+        "gasUsed": "2289625",
+        "timestamp": "2025-09-07T06:53:15.699Z"
+      },
+      {
+        "address": "0x4598ee66103120b152607a7246a8c94a837f399d",
+        "contractType": "Oracle",
+        "transactionHash": "0x1f9627858f5ed6de6f85bca8519ce0fd8486971f8e15c17b34a92183e9b7c525",
+        "blockNumber": 18500193,
+        "deployer": "0x0a3ee5dedb2249b431b9423f9d245765422c51d0",
+        "network": "ethereum",
+        "gasUsed": "2167713",
+        "timestamp": "2025-09-17T16:02:52.165Z"
+      },
+      {
+        "address": "0xf1aa74793bd7e796559326924464d90fa7a25e85",
+        "contractType": "OneiroVault",
+        "transactionHash": "0x4db93c33991843cfeb6825c799a9e0af0d775fdf6c37ce826961702720aa247e",
+        "blockNumber": 18500122,
+        "deployer": "0x5423af1ddf8964da987291395b20ed4726c30bc1",
+        "network": "base",
+        "gasUsed": "2385672",
+        "timestamp": "2025-09-19T06:14:45.447Z"
+      },
+      {
+        "address": "0xa91fad56c31e1541de1da67390e08bfd3c31ff89",
+        "contractType": "SwarmController",
+        "transactionHash": "0xc5ec1fcd0a5386672cd7f1db254eda97421b11ffce2561471e228712d44ea34b",
+        "blockNumber": 18500569,
+        "deployer": "0xc95d47ccc8ebab1bfce063403c5a039697de71db",
+        "network": "base",
+        "gasUsed": "2452677",
+        "timestamp": "2025-09-08T10:59:16.372Z"
+      },
+      {
+        "address": "0xda7126239521a9af6d92ccc2df7b2e761b73ac1d",
+        "contractType": "OneiroVault",
+        "transactionHash": "0x030179da55cec292849d3d80a2a3b58b10459940b65f18c199bd12204fb56997",
+        "blockNumber": 18500007,
+        "deployer": "0xbbdf5138615b04c448d45763624e1d6830470bfc",
+        "network": "skale",
+        "gasUsed": "2161037",
+        "timestamp": "2025-09-11T08:00:27.515Z"
+      },
+      {
+        "address": "0x5ef2b47d968031e532c2c5b324f55fdf12632e01",
+        "contractType": "SwarmController",
+        "transactionHash": "0xdb7c367108901835cf80837803544161f60dd6b28ed31c598401e52598b2c54d",
+        "blockNumber": 18500758,
+        "deployer": "0xf376dca91c0969ac4ad0ac5be37e18ac1b6f4b44",
+        "network": "skale",
+        "gasUsed": "2424341",
+        "timestamp": "2025-09-14T00:21:47.083Z"
+      }
+    ],
+    "testnet": [],
+    "unknown": []
+  },
+  "networkDetails": {
+    "ethereum": {
+      "contracts": [
+        {
+          "address": "0xceed3a23acf585fa514b55d80a7869e030b20263",
+          "contractType": "OneiroVault",
+          "transactionHash": "0x28d96534ad1c3fdacd0c03ab65a0e7d752e047e596f0d2dcbae01c8fd1a103ea",
+          "blockNumber": 18500418,
+          "deployer": "0x4dd7ed26bdd729fcd5ceda88fe7b85931b4bb2d2",
+          "network": "ethereum",
+          "gasUsed": "2315798",
+          "timestamp": "2025-09-02T18:26:05.559Z"
+        },
+        {
+          "address": "0xbeee237c361bc206696f3641cf2393dccd4b311a",
+          "contractType": "SwarmController",
+          "transactionHash": "0xb4023ed7db7e340fc92841bf66ded496a820b2e47324e07a7d97c76f4cfb881d",
+          "blockNumber": 18500225,
+          "deployer": "0x47c55b0cb1c1f932b52d753814b1a8c7cef0e3dd",
+          "network": "ethereum",
+          "gasUsed": "2289625",
+          "timestamp": "2025-09-07T06:53:15.699Z"
+        },
+        {
+          "address": "0x4598ee66103120b152607a7246a8c94a837f399d",
+          "contractType": "Oracle",
+          "transactionHash": "0x1f9627858f5ed6de6f85bca8519ce0fd8486971f8e15c17b34a92183e9b7c525",
+          "blockNumber": 18500193,
+          "deployer": "0x0a3ee5dedb2249b431b9423f9d245765422c51d0",
+          "network": "ethereum",
+          "gasUsed": "2167713",
+          "timestamp": "2025-09-17T16:02:52.165Z"
+        }
+      ],
+      "transactions": [],
+      "lastBlock": 18500222
+    },
+    "base": {
+      "contracts": [
+        {
+          "address": "0xf1aa74793bd7e796559326924464d90fa7a25e85",
+          "contractType": "OneiroVault",
+          "transactionHash": "0x4db93c33991843cfeb6825c799a9e0af0d775fdf6c37ce826961702720aa247e",
+          "blockNumber": 18500122,
+          "deployer": "0x5423af1ddf8964da987291395b20ed4726c30bc1",
+          "network": "base",
+          "gasUsed": "2385672",
+          "timestamp": "2025-09-19T06:14:45.447Z"
+        },
+        {
+          "address": "0xa91fad56c31e1541de1da67390e08bfd3c31ff89",
+          "contractType": "SwarmController",
+          "transactionHash": "0xc5ec1fcd0a5386672cd7f1db254eda97421b11ffce2561471e228712d44ea34b",
+          "blockNumber": 18500569,
+          "deployer": "0xc95d47ccc8ebab1bfce063403c5a039697de71db",
+          "network": "base",
+          "gasUsed": "2452677",
+          "timestamp": "2025-09-08T10:59:16.372Z"
+        }
+      ],
+      "transactions": [],
+      "lastBlock": 18500566
+    },
+    "skale": {
+      "contracts": [
+        {
+          "address": "0xda7126239521a9af6d92ccc2df7b2e761b73ac1d",
+          "contractType": "OneiroVault",
+          "transactionHash": "0x030179da55cec292849d3d80a2a3b58b10459940b65f18c199bd12204fb56997",
+          "blockNumber": 18500007,
+          "deployer": "0xbbdf5138615b04c448d45763624e1d6830470bfc",
+          "network": "skale",
+          "gasUsed": "2161037",
+          "timestamp": "2025-09-11T08:00:27.515Z"
+        },
+        {
+          "address": "0x5ef2b47d968031e532c2c5b324f55fdf12632e01",
+          "contractType": "SwarmController",
+          "transactionHash": "0xdb7c367108901835cf80837803544161f60dd6b28ed31c598401e52598b2c54d",
+          "blockNumber": 18500758,
+          "deployer": "0xf376dca91c0969ac4ad0ac5be37e18ac1b6f4b44",
+          "network": "skale",
+          "gasUsed": "2424341",
+          "timestamp": "2025-09-14T00:21:47.083Z"
+        }
+      ],
+      "transactions": [],
+      "lastBlock": 18500289
+    }
+  },
+  "errors": [],
+  "contractTypes": [
+    "OneiroVault",
+    "SwarmController",
+    "Oracle",
+    "Phantom",
+    "DummySwapAdapter",
+    "BridgeClient",
+    "MonitorBot"
+  ],
+  "metadata": {
+    "scannerConfig": {
+      "networks": [
+        "ethereum",
+        "base",
+        "skale"
+      ],
+      "outputPath": "./mock-dream-mind-lucid-report.json",
+      "includeTestnets": false
+    },
+    "networksConfigured": [
+      "ethereum",
+      "base",
+      "skale"
+    ]
+  }
+}

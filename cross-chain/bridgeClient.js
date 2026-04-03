@@ -1,14 +1,20 @@
 /**
  * ONEIROBOT/GITHUB GENE 9000 - Cross-Chain Bridge Client
- * Seamless asset transfer between SKALE and Solana ecosystems
+ * PRIVATE - Secure asset transfer between SKALE and Solana ecosystems
  */
 
 class Gene9000BridgeClient {
     constructor(config = {}) {
+        // Private access control
+        this.accessToken = config.accessToken;
+        if (!this.accessToken) {
+            throw new Error('🔒 Bridge access denied: Valid access token required');
+        }
+        
         this.config = {
-            skaleEndpoint: config.skaleEndpoint || 'https://skale-rpc-endpoint',
+            skaleEndpoint: process.env.SKALE_ENDPOINT || config.skaleEndpoint || '[PRIVATE]',
             solanaEndpoint: config.solanaEndpoint || 'https://api.mainnet-beta.solana.com',
-            bridgeProgram: config.bridgeProgram || 'Oneirobot111111111111111111111111111111111',
+            bridgeProgram: config.bridgeProgram || '[PRIVATE_PROGRAM]',
             maxRetries: config.maxRetries || 3,
             ...config
         };
@@ -16,23 +22,32 @@ class Gene9000BridgeClient {
     }
 
     async initialize() {
-        console.log('🌉 GENE 9000: Initializing cross-chain bridge client...');
+        console.log('🌉 GENE 9000: Initializing private cross-chain bridge client...');
         
         try {
-            console.log('✅ Solana connection configured');
-            console.log('✅ SKALE endpoint configured');
+            // Validate access token
+            if (!this.validateAccess()) {
+                throw new Error('Invalid bridge access credentials');
+            }
+            
+            console.log('✅ Private Solana connection configured');
+            console.log('✅ Private SKALE endpoint configured');
             
             this.isInitialized = true;
-            console.log('🌉 Bridge client ready for cross-chain operations');
+            console.log('🌉 Private bridge client ready for secure cross-chain operations');
             
         } catch (error) {
-            console.error('❌ Bridge initialization failed:', error.message);
+            console.error('❌ Private bridge initialization failed:', error.message);
             throw error;
         }
     }
 
+    validateAccess() {
+        return this.accessToken && this.accessToken.length >= 10;
+    }
+
     /**
-     * Prepare bridge message for SKALE -> Solana transfer
+     * Prepare bridge message for SKALE -> Solana transfer - PRIVATE ACCESS
      */
     async prepareBridgeMessage(transferData) {
         console.log(`🔄 Preparing bridge message: ${transferData.amount} ${transferData.token}`);
