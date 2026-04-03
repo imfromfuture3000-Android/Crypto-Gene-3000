@@ -6,18 +6,19 @@
 This is a private trading system with restricted access. Valid authentication credentials are required for operation.
 
 ## Features
-- 🏦 Secure private vaults with programmatic control
-- 🤖 Authenticated agent registration & automated trading strategies
-- 💰 Private royalty routing system
-- ⚡ Secure cross-chain SKALE + Solana compatibility
-- 📊 Protected real-time arbitrage monitoring
-- 🌉 Authenticated cross-chain bridge operations
-- 🧠 Private Oracle & Phantom strategy execution
+- 🏦 Secure vaults with programmatic control
+- 🤖 Agent registration & automated trading strategies
+- 💰 Automatic 5% royalty routing to owner wallet
+- ⚡ Cross-chain SKALE + Solana compatibility
+- 📊 Real-time arbitrage monitoring
+- 🌉 Cross-chain bridge operations
+- 🧠 Oracle & Phantom strategy execution
+- 🌐 **Web Interface for GitHub Codespaces compatibility**
 
-## GENE 9000 Private System Components
+## GENE 9000 System Components
 
-### Core Infrastructure (Access Controlled)
-- **OneiroVault**: Secure private vault with owner controls
+### Core Infrastructure
+- **OneiroVault**: Secure ETH vault with owner controls
 - **SwarmController**: Multi-bot strategy execution engine
 - **Oracle Strategy**: Private price feed analysis and automated trading
 - **Phantom Strategy**: Stealth arbitrage and liquidity capture
@@ -39,7 +40,16 @@ The Dream-mind-lucid scanner is a comprehensive tool for collecting all real con
 - 🌐 **Real-time Analysis**: Analyzes deployment scripts, artifacts, and transaction logs
 - 📋 **Contract Type Detection**: Identifies OneiroVault, Oracle, Phantom, and other contracts
 
-### Usage
+### 1. Start the GENE 9000 System
+
+#### Option A: Web Interface (Recommended for GitHub Codespaces)
+```bash
+npm install
+npm run web
+```
+Then open your browser to `http://localhost:3000` or use the forwarded port in GitHub Codespaces.
+
+#### Option B: Console Mode
 ```bash
 # Scan all mainnet deployments
 npm run scan
@@ -101,12 +111,31 @@ npm run scan:report
 node scripts/dream-scan.js scan --help
 ```
 
-## File Tree (Private System)
+## 🌐 GitHub Codespaces Usage
+
+When running in GitHub Codespaces or any web-based development environment:
+
+1. **Install dependencies**: `npm install`
+2. **Start web server**: `npm run web`
+3. **Access via browser**: Use the forwarded port URL (typically port 3000)
+4. **Full web interface**: 
+   - Real-time system monitoring
+   - Start/stop controls
+   - Live log streaming  
+   - Performance statistics
+   - Visual status indicators
+
+The web interface provides the same functionality as the console version but with a user-friendly dashboard perfect for browser-based environments.
+
+## File Tree
 
 ```
-
-Cryptonout-9-voults/
+Crypto-Gene-3000/
+├─ package.json             # 📦 Main project dependencies
+├─ server.js                # 🌐 Web server for browser access  
 ├─ gene9000.js              # 🤖 Main GENE 9000 orchestrator
+├─ public/
+│  └─ index.html            # 🖥️ Web interface dashboard
 ├─ cross-chain/             # Cross-chain operations
 │  ├─ Monitorbots.js        # 📊 Autonomous monitoring swarm
 │  └─ bridgeClient.js       # 🌉 Cross-chain bridge client

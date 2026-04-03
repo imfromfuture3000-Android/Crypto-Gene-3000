@@ -1,33 +1,32 @@
 {
   "name": "crypto-gene-3000",
   "version": "1.0.0",
-  "description": "Private ONEIROBOT/GITHUB GENE 9000 System - Autonomous Trading Swarm",
+  "description": "🚀 Crypto-Gene-3000 - Next-generation blockchain vaults with ONEIROBOT/GITHUB GENE 9000 autonomous trading system",
   "main": "gene9000.js",
-  "private": true,
   "scripts": {
     "start": "node gene9000.js",
-    "test": "echo \"Private system - tests require access tokens\" && exit 1",
-    "integration-test": "node scripts/integrationTest.js",
-    "scan": "node scripts/dream-scan.js scan",
-    "scan:report": "node scripts/dream-scan.js report",
-    "scan:testnets": "node scripts/dream-scan.js scan --include-testnets"
-  },
-  "bin": {
-    "dream-scan": "./scripts/dream-scan.js"
+    "web": "node server.js",
+    "dev": "node server.js",
+    "test": "echo \"No tests specified\" && exit 0"
   },
   "dependencies": {
-    "dotenv": "^16.4.5",
-    "ethers": "^6.13.0"
-  },
-  "engines": {
-    "node": ">=16.0.0"
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "socket.io": "^4.8.1"
   },
   "keywords": [
-    "private",
     "blockchain",
+    "crypto",
     "trading",
-    "gene9000"
+    "gene9000",
+    "oneirobot",
+    "autonomous",
+    "arbitrage",
+    "cross-chain"
   ],
-  "author": "Imfromfuture3000",
-  "license": "SEE LICENSE IN LICENSE"
+  "author": "ONEIROBOT/GITHUB",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.0.0"
+  }
 }

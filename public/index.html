@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🤖 ONEIROBOT/GITHUB GENE 9000 - Autonomous Trading System</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            color: #e94560;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .header {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid #e94560;
+            box-shadow: 0 4px 20px rgba(233, 69, 96, 0.3);
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px #e94560;
+            animation: pulse 2s infinite;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.8;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .panel {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid #e94560;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .panel h2 {
+            color: #00f5ff;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+            text-shadow: 0 0 10px #00f5ff;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .status-operational { background: #00ff00; box-shadow: 0 0 10px #00ff00; }
+        .status-error { background: #ff0000; box-shadow: 0 0 10px #ff0000; }
+        .status-initializing { background: #ffff00; box-shadow: 0 0 10px #ffff00; }
+        .status-offline { background: #888; }
+
+        .controls {
+            margin: 20px 0;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #e94560, #ff6b8a);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(233, 69, 96, 0.4);
+        }
+
+        .btn:disabled {
+            background: #666;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn.stop {
+            background: linear-gradient(135deg, #ff4757, #ff6b8a);
+        }
+
+        .logs-container {
+            grid-column: 1 / -1;
+            max-height: 400px;
+            overflow-y: auto;
+            background: #000;
+            border: 1px solid #333;
+            border-radius: 5px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+
+        .log-entry {
+            margin-bottom: 5px;
+            padding: 5px;
+            border-radius: 3px;
+        }
+
+        .log-info { color: #00ff00; }
+        .log-error { color: #ff4757; background: rgba(255, 71, 87, 0.1); }
+        .log-warn { color: #ffa502; }
+
+        .log-timestamp {
+            color: #666;
+            font-size: 12px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .stat-item {
+            background: rgba(0, 245, 255, 0.1);
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #00f5ff;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #00f5ff;
+            text-shadow: 0 0 10px #00f5ff;
+        }
+
+        .stat-label {
+            color: #ccc;
+            margin-top: 5px;
+        }
+
+        .connection-status {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .connected {
+            background: rgba(0, 255, 0, 0.2);
+            border: 1px solid #00ff00;
+            color: #00ff00;
+        }
+
+        .disconnected {
+            background: rgba(255, 0, 0, 0.2);
+            border: 1px solid #ff0000;
+            color: #ff0000;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="connection-status" id="connectionStatus">Connecting...</div>
+    
+    <div class="header">
+        <h1>🤖 ONEIROBOT/GITHUB GENE 9000</h1>
+        <p>Autonomous Trading Swarm Intelligence System</p>
+    </div>
+
+    <div class="container">
+        <div class="panel">
+            <h2>🎮 System Control</h2>
+            <div id="systemStatus">
+                <span class="status-indicator status-offline"></span>
+                <span>System Status: <strong id="statusText">Not Started</strong></span>
+            </div>
+            
+            <div class="controls">
+                <button class="btn" id="startBtn" onclick="startSystem()">🚀 Start Gene 9000</button>
+                <button class="btn stop" id="stopBtn" onclick="stopSystem()" disabled>🛑 Stop System</button>
+            </div>
+
+            <div id="systemInfo" style="margin-top: 20px;">
+                <h3>📊 System Information</h3>
+                <div id="componentStatus" style="margin-top: 10px;">
+                    <div>Monitor: <span id="monitorStatus">❌ Offline</span></div>
+                    <div>Bridge: <span id="bridgeStatus">❌ Offline</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h2>📈 Performance Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value" id="totalVolume">0.000000</div>
+                    <div class="stat-label">Total Volume (ETH)</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="totalRoyalties">0.000000</div>
+                    <div class="stat-label">Total Royalties (ETH)</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="ownerWallet">0x742d35...</div>
+                    <div class="stat-label">Owner Wallet</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h2>📱 Real-time System Logs</h2>
+            <div class="logs-container" id="logsContainer">
+                <div class="log-entry log-info">
+                    <span class="log-timestamp">[System Ready]</span> 
+                    🌐 Web interface initialized - Ready to launch GENE 9000 operations
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const socket = io();
+        let isConnected = false;
+
+        // Connection status
+        socket.on('connect', () => {
+            isConnected = true;
+            updateConnectionStatus();
+            console.log('Connected to Gene 9000 server');
+        });
+
+        socket.on('disconnect', () => {
+            isConnected = false;
+            updateConnectionStatus();
+            console.log('Disconnected from Gene 9000 server');
+        });
+
+        function updateConnectionStatus() {
+            const statusEl = document.getElementById('connectionStatus');
+            if (isConnected) {
+                statusEl.textContent = '🟢 Connected';
+                statusEl.className = 'connection-status connected';
+            } else {
+                statusEl.textContent = '🔴 Disconnected';
+                statusEl.className = 'connection-status disconnected';
+            }
+        }
+
+        // Log handling
+        socket.on('log', (logEntry) => {
+            addLogEntry(logEntry);
+        });
+
+        socket.on('logs', (logs) => {
+            const container = document.getElementById('logsContainer');
+            logs.forEach(log => addLogEntry(log, false));
+        });
+
+        function addLogEntry(logEntry, scroll = true) {
+            const container = document.getElementById('logsContainer');
+            const logDiv = document.createElement('div');
+            logDiv.className = `log-entry log-${logEntry.level}`;
+            
+            const timestamp = new Date(logEntry.timestamp).toLocaleTimeString();
+            logDiv.innerHTML = `
+                <span class="log-timestamp">[${timestamp}]</span> 
+                ${logEntry.message}
+            `;
+            
+            container.appendChild(logDiv);
+            
+            // Keep only last 100 logs
+            const logs = container.children;
+            if (logs.length > 100) {
+                container.removeChild(logs[0]);
+            }
+            
+            // Auto-scroll to bottom
+            if (scroll) {
+                container.scrollTop = container.scrollHeight;
+            }
+        }
+
+        // Status updates
+        socket.on('status', (status) => {
+            updateSystemStatus(status);
+        });
+
+        function updateSystemStatus(status) {
+            const statusEl = document.getElementById('statusText');
+            const indicatorEl = document.querySelector('.status-indicator');
+            const startBtn = document.getElementById('startBtn');
+            const stopBtn = document.getElementById('stopBtn');
+            
+            statusEl.textContent = status.status;
+            
+            // Update status indicator
+            indicatorEl.className = 'status-indicator';
+            switch (status.status) {
+                case 'OPERATIONAL':
+                    indicatorEl.classList.add('status-operational');
+                    startBtn.disabled = true;
+                    stopBtn.disabled = false;
+                    break;
+                case 'ERROR':
+                    indicatorEl.classList.add('status-error');
+                    startBtn.disabled = false;
+                    stopBtn.disabled = true;
+                    break;
+                case 'INITIALIZING':
+                    indicatorEl.classList.add('status-initializing');
+                    startBtn.disabled = true;
+                    stopBtn.disabled = true;
+                    break;
+                default:
+                    indicatorEl.classList.add('status-offline');
+                    startBtn.disabled = false;
+                    stopBtn.disabled = true;
+            }
+            
+            // Update components
+            const monitorStatus = document.getElementById('monitorStatus');
+            const bridgeStatus = document.getElementById('bridgeStatus');
+            
+            if (status.components) {
+                monitorStatus.textContent = status.components.monitor ? '✅ Active' : '❌ Offline';
+                bridgeStatus.textContent = status.components.bridge ? '✅ Active' : '❌ Offline';
+            }
+            
+            // Update stats
+            if (status.stats) {
+                document.getElementById('totalVolume').textContent = status.stats.totalVolume.toFixed(6);
+                document.getElementById('totalRoyalties').textContent = status.stats.totalRoyalties.toFixed(6);
+            }
+            
+            if (status.config && status.config.ownerWallet) {
+                const wallet = status.config.ownerWallet;
+                document.getElementById('ownerWallet').textContent = 
+                    wallet.substring(0, 8) + '...';
+            }
+        }
+
+        // API functions
+        async function startSystem() {
+            try {
+                const response = await fetch('/api/start', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({})
+                });
+                
+                const result = await response.json();
+                if (result.success) {
+                    console.log('System started successfully');
+                } else {
+                    console.error('Failed to start system:', result.message);
+                    alert('Failed to start system: ' + result.message);
+                }
+            } catch (error) {
+                console.error('Error starting system:', error);
+                alert('Error starting system: ' + error.message);
+            }
+        }
+
+        async function stopSystem() {
+            try {
+                const response = await fetch('/api/stop', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+                
+                const result = await response.json();
+                if (result.success) {
+                    console.log('System stopped successfully');
+                } else {
+                    console.error('Failed to stop system:', result.message);
+                    alert('Failed to stop system: ' + result.message);
+                }
+            } catch (error) {
+                console.error('Error stopping system:', error);
+                alert('Error stopping system: ' + error.message);
+            }
+        }
+
+        // Request initial status
+        socket.emit('requestStatus');
+
+        // Periodic status updates
+        setInterval(() => {
+            socket.emit('requestStatus');
+        }, 10000);
+    </script>
+</body>
+</html>
